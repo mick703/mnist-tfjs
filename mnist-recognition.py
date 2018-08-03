@@ -13,6 +13,9 @@ num_classes = 10
 epochs = 30
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
+# print(x_test[0])
+# quit()
+
 
 #Convert the image pixils 28X28 to a single vector 784 so a training set 
 #becomes a matrix. This is using numpy.reshape
@@ -30,7 +33,9 @@ x_train /= 255
 x_test /= 255
 
 print(x_train.shape[0], 'train samples')
-print(x_test.shape[0], 'test samples')
+print(x_test[0].shape, 'test samples')
+
+quit()
 
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
@@ -44,7 +49,7 @@ model = Sequential()
 #Because this is the input layer, we need to tell Keras what 
 #the input data looks like in dimension 
 #in this case, it is just a single dimension array with 784 units mapped to all 
-#pixils in a 28X28 grey scale
+#pixils in a 28X28 greyscale
 model.add(Dense(512, activation='relu', input_shape=(784,)))
 
 #According to the doc, dropout is used for preventing overfitting so it is 
